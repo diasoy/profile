@@ -7,7 +7,7 @@ export default function Home() {
         <section className="text-center">
           <div className="flex justify-center mb-8">
             <div className="relative">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
                   <span className="text-4xl">🚀</span>
                 </div>
@@ -22,7 +22,7 @@ export default function Home() {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto">
             I&apos;m a software engineer, open-source creator, and former
             professional chef. I&apos;ve been making websites since 1998 and{' '}
-            <span className="text-pink-500 font-medium">writing on this blog</span> for over ten years!
+            <span className="text-purple-500 font-medium">writing on this blog</span> for over ten years!
           </p>
           
           <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
@@ -30,7 +30,7 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-500 hover:bg-pink-600 transition-colors duration-200">
+            <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-200">
               📖 About Me
             </button>
             <button className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
@@ -45,7 +45,7 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Notes</h2>
-              <a href="/notes" className="text-pink-500 hover:text-pink-600 font-medium">See All</a>
+              <a href="/notes" className="text-purple-500 hover:text-purple-600 font-medium">See All</a>
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               Life, music, projects, and everything else.
@@ -67,7 +67,7 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Blog</h2>
-              <a href="/blog" className="text-pink-500 hover:text-pink-600 font-medium">See All</a>
+              <a href="/blog" className="text-purple-500 hover:text-purple-600 font-medium">See All</a>
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               Guides, references, and tutorials.
@@ -90,7 +90,7 @@ export default function Home() {
         <section className="mt-20">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Deep Dives</h2>
-            <a href="/deep-dives" className="text-pink-500 hover:text-pink-600 font-medium">All Topics</a>
+            <a href="/deep-dives" className="text-purple-500 hover:text-purple-600 font-medium">All Topics</a>
           </div>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             Long-form tutorials on a variety of development topics.

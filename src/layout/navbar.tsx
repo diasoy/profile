@@ -27,7 +27,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-purple-600">
                 <span className="text-sm font-bold text-white">D</span>
               </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
