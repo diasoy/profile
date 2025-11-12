@@ -1,373 +1,350 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { 
-  Mail, 
-  Github, 
-  BookOpen,
-  Rocket,
-  ExternalLink,
-  Linkedin,
-  Monitor,
-  Smartphone,
-  Database,
-  Cloud,
-  Terminal,
-  Palette,
-  Cpu,
-  HardDrive,
-  MemoryStick,
-  Laptop
-} from "lucide-react"
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
-export default function About() {
+export default function AboutPage() {
+  const skills = {
+    frontend: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'TailwindCSS',
+      'HTML/CSS',
+      'Vue.js',
+      'Redux',
+    ],
+    backend: [
+      'Node.js',
+      'Express',
+      'NestJS',
+      'GraphQL',
+      'REST API',
+      'PostgreSQL',
+      'MongoDB',
+      'Redis',
+    ],
+    mobile: [
+      'React Native',
+      'Expo',
+      'Flutter',
+      'iOS',
+      'Android',
+    ],
+    tools: [
+      'Git',
+      'Docker',
+      'AWS',
+      'Vercel',
+      'Firebase',
+      'Prisma',
+      'Jest',
+      'Postman',
+    ],
+  };
 
-  const currentActivities = [
-    "Working full-time as a software engineer",
-    "Tweaking this website",
-    "Learning React Native and mobile development",
-    "Contributing to open-source projects",
-    "Eating healthy and cooking",
-    "Working out"
-  ]
+  const experience = [
+    {
+      company: 'Tech Innovations Inc.',
+      position: 'Senior Full Stack Developer',
+      period: '2023 - Present',
+      description: 'Leading development of enterprise web applications using Next.js and Node.js. Managing a team of 5 developers and implementing best practices.',
+      achievements: [
+        'Reduced application load time by 40%',
+        'Implemented CI/CD pipeline',
+        'Mentored junior developers',
+      ],
+    },
+    {
+      company: 'Digital Solutions Ltd.',
+      position: 'Full Stack Developer',
+      period: '2021 - 2023',
+      description: 'Developed and maintained multiple web applications for clients. Collaborated with designers and project managers to deliver high-quality solutions.',
+      achievements: [
+        'Built 15+ client projects',
+        'Improved code quality with testing',
+        'Implemented responsive designs',
+      ],
+    },
+    {
+      company: 'StartUp Studio',
+      position: 'Frontend Developer',
+      period: '2020 - 2021',
+      description: 'Created engaging user interfaces using React and modern CSS frameworks. Worked closely with UX designers to implement pixel-perfect designs.',
+      achievements: [
+        'Developed reusable component library',
+        'Increased user engagement by 25%',
+        'Optimized web performance',
+      ],
+    },
+  ];
+
+  const education = [
+    {
+      institution: 'University of Technology',
+      degree: 'Bachelor of Computer Science',
+      period: '2016 - 2020',
+      description: 'Focused on software engineering, algorithms, and data structures. Graduated with honors.',
+    },
+  ];
+
+  const certifications = [
+    'AWS Certified Solutions Architect',
+    'Google Cloud Professional Developer',
+    'Meta React Advanced Certification',
+    'MongoDB Developer Certification',
+  ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <section className="text-center mb-16">
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-purple-500/25">
-                <span className="text-5xl">👋</span>
-              </div>
-            </div>
-          </div>
-          
-          <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 dark:from-white dark:via-purple-100 dark:to-white bg-clip-text text-transparent mb-6">
-            About Me
+    <main className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            👋 About Me
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Learn more about my journey as a software engineer, my current projects, and what drives my passion for technology.
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+            Full Stack Developer & Tech Enthusiast
           </p>
-        </section>
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Hi! I&apos;m a passionate full-stack developer with over 5 years of experience building 
+              web and mobile applications. I specialize in creating scalable, performant, and 
+              user-friendly solutions using modern technologies like React, Next.js, Node.js, and TypeScript.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              I love turning complex problems into simple, beautiful, and intuitive solutions. 
+              When I&apos;m not coding, you can find me exploring new technologies, contributing to 
+              open-source projects, or sharing knowledge through blog posts and tutorials.
+            </p>
+          </div>
+        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {/* Left Column - Bio & Skills */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Bio Section */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                    <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  My Story
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-slate-600 dark:text -slate-300 leading-relaxed">
-                  I am a passionate software engineer with a love for creating innovative solutions that make a real difference. 
-                  My journey began over a decade ago when I wrote my first line of code, and since then, I&apos;ve been on an 
-                  incredible adventure through the ever-evolving world of technology.
-                </p>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  I believe in writing clean, maintainable code and creating user experiences that truly matter. 
-                  Whether it&apos;s building scalable web applications or contributing to open-source projects, 
-                  I&apos;m always excited to tackle new challenges and learn something new.
-                </p>
-              </CardContent>
-            </Card>
+        <Separator className="my-8" />
 
-            {/* Current Activities */}
-            <Card className="border-0 shadow-lg">
+        {/* Skills Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            💻 Skills & Technologies
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <Rocket className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  What I&apos;m Doing Now
-                </CardTitle>
-                <CardDescription>
-                  Updated October 11th, 2025
-                </CardDescription>
+                <CardTitle className="text-lg">Frontend Development</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-1">
-                  {currentActivities.map((activity, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-500 mt-2 flex-shrink-0"></div>
-                      <span className="text-slate-600 dark:text-slate-300 leading-relaxed">{activity}</span>
-                    </li>
+                <div className="flex flex-wrap gap-2">
+                  {skills.frontend.map((skill) => (
+                    <Badge key={skill} variant="secondary">
+                      {skill}
+                    </Badge>
                   ))}
-                </ul>
+                </div>
               </CardContent>
             </Card>
 
-            {/* Hardware Section */}
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900 flex items-center justify-center">
-                    <Cpu className="w-5 h-5 text-red-600 dark:text-red-400" />
-                  </div>
-                  Hardware Setup
-                </CardTitle>
-                <CardDescription>
-                  My development machines and specifications
-                </CardDescription>
+                <CardTitle className="text-lg">Backend Development</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Main Desktop */}
-                <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Monitor className="w-6 h-6 text-blue-600" />
-                    <h4 className="font-semibold text-lg text-slate-900 dark:text-slate-100">Main Desktop PC</h4>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3">
-                      <Cpu className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Processor</div>
-                        <div className="text-xs text-muted-foreground">Intel Core i7-12700K</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <MemoryStick className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Memory</div>
-                        <div className="text-xs text-muted-foreground">32GB DDR4 3200MHz</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <HardDrive className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Storage</div>
-                        <div className="text-xs text-muted-foreground">1TB NVMe SSD + 2TB HDD</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Monitor className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Graphics</div>
-                        <div className="text-xs text-muted-foreground">NVIDIA RTX 3070</div>
-                      </div>
-                    </div>
-                  </div>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.backend.map((skill) => (
+                    <Badge key={skill} variant="secondary">
+                      {skill}
+                    </Badge>
+                  ))}
                 </div>
+              </CardContent>
+            </Card>
 
-                {/* Laptop */}
-                <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Laptop className="w-6 h-6 text-green-600" />
-                    <h4 className="font-semibold text-lg text-slate-900 dark:text-slate-100">Laptop</h4>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3">
-                      <Laptop className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Model</div>
-                        <div className="text-xs text-muted-foreground">MacBook Pro 14&quot; M2 Pro</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <MemoryStick className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Memory</div>
-                        <div className="text-xs text-muted-foreground">16GB Unified Memory</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <HardDrive className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Storage</div>
-                        <div className="text-xs text-muted-foreground">512GB SSD</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Monitor className="w-4 h-4 text-slate-500" />
-                      <div>
-                        <div className="font-medium text-sm">Display</div>
-                        <div className="text-xs text-muted-foreground">14&quot; Liquid Retina XDR</div>
-                      </div>
-                    </div>
-                  </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Mobile Development</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.mobile.map((skill) => (
+                    <Badge key={skill} variant="secondary">
+                      {skill}
+                    </Badge>
+                  ))}
                 </div>
+              </CardContent>
+            </Card>
 
-                {/* Peripherals */}
-                <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4">
-                  <h4 className="font-semibold text-lg text-slate-900 dark:text-slate-100 mb-4">Peripherals & Accessories</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="text-sm">
-                      <span className="font-medium">Monitor:</span>
-                      <span className="text-muted-foreground ml-2">Dell UltraSharp 27&quot; 4K</span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Keyboard:</span>
-                      <span className="text-muted-foreground ml-2">Keychron K2 Mechanical</span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Mouse:</span>
-                      <span className="text-muted-foreground ml-2">Logitech MX Master 3</span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Headphones:</span>
-                      <span className="text-muted-foreground ml-2">Sony WH-1000XM4</span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Webcam:</span>
-                      <span className="text-muted-foreground ml-2">Logitech C920 HD Pro</span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Microphone:</span>
-                      <span className="text-muted-foreground ml-2">Blue Yeti USB</span>
-                    </div>
-                  </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Tools & Platforms</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.tools.map((skill) => (
+                    <Badge key={skill} variant="secondary">
+                      {skill}
+                    </Badge>
+                  ))}
                 </div>
-                
-                <Separator />
-                
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  My setup is designed for both performance and comfort during long coding sessions. 
-                  The desktop handles heavy development work while the MacBook provides excellent portability for work on the go.
-                </p>
               </CardContent>
             </Card>
           </div>
+        </div>
 
-          {/* Right Column - Contact & Personal */}
-          <div className="space-y-8">
-            {/* Contact Section */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+        <Separator className="my-8" />
+
+        {/* Experience Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            💼 Work Experience
+          </h2>
+          <div className="space-y-6">
+            {experience.map((exp, index) => (
+              <Card key={index}>
+                <CardHeader>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <CardTitle className="text-xl mb-1">{exp.position}</CardTitle>
+                      <p className="text-blue-600 dark:text-blue-400 font-medium">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <Badge variant="outline" className="mt-2 sm:mt-0 w-fit">
+                      {exp.period}
+                    </Badge>
                   </div>
-                  Get In Touch
-                </CardTitle>
-                <CardDescription>
-                  Let&apos;s connect and collaborate
-                </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 dark:text-gray-300 mb-3">
+                    {exp.description}
+                  </p>
+                  <div>
+                    <p className="font-semibold text-sm text-gray-900 dark:text-white mb-2">
+                      Key Achievements:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i} className="text-gray-700 dark:text-gray-300 text-sm">
+                          {achievement}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <Separator className="my-8" />
+
+        {/* Education Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            🎓 Education
+          </h2>
+          {education.map((edu, index) => (
+            <Card key={index}>
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <CardTitle className="text-xl mb-1">{edu.degree}</CardTitle>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium">
+                      {edu.institution}
+                    </p>
+                  </div>
+                  <Badge variant="outline" className="mt-2 sm:mt-0 w-fit">
+                    {edu.period}
+                  </Badge>
+                </div>
               </CardHeader>
-              <CardContent className="space-y-3">
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start gap-3 h-auto py-3"
-                  asChild
-                >
-                  <a href="mailto:diassnorrman@gmail.com">
-                    <Mail className="w-4 h-4" />
-                    <div className="text-left">
-                      <div className="font-medium">Email</div>
-                      <div className="text-sm text-muted-foreground">diassnorrman@gmail.com</div>
-                    </div>
-                  </a>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start gap-3 h-auto py-3"
-                  asChild
-                >
-                  <a href="https://github.com/diasoy" target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4" />
-                    <div className="text-left">
-                      <div className="font-medium">GitHub</div>
-                      <div className="text-sm text-muted-foreground">@diasoy</div>
-                    </div>
-                    <ExternalLink className="w-4 h-4 ml-auto" />
-                  </a>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start gap-3 h-auto py-3"
-                  asChild
-                >
-                  <a href="https://www.linkedin.com/in/diasnormann" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="w-4 h-4" />
-                    <div className="text-left">
-                      <div className="font-medium">LinkedIn</div>
-                      <div className="text-sm text-muted-foreground">@diasnormann</div>
-                    </div>
-                    <ExternalLink className="w-4 h-4 ml-auto" />
-                  </a>
-                </Button>
+              <CardContent>
+                <p className="text-gray-700 dark:text-gray-300">{edu.description}</p>
               </CardContent>
             </Card>
+          ))}
+        </div>
 
-            {/* Tools Section */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                    <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  Tools & Setup
-                </CardTitle>
-                <CardDescription>
-                  Development tools and software I use daily
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Monitor className="w-5 h-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium text-sm">VS Code</div>
-                    <div className="text-xs text-muted-foreground">Primary code editor with extensions</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Terminal className="w-5 h-5 text-gray-600" />
-                  <div>
-                    <div className="font-medium text-sm">Terminal & Git</div>
-                    <div className="text-xs text-muted-foreground">Command line tools and version control</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Palette className="w-5 h-5 text-purple-600" />
-                  <div>
-                    <div className="font-medium text-sm">Figma</div>
-                    <div className="text-xs text-muted-foreground">UI/UX design and prototyping</div>
-                  </div>
-                </div>
+        <Separator className="my-8" />
 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Database className="w-5 h-5 text-green-600" />
-                  <div>
-                    <div className="font-medium text-sm">Database Tools</div>
-                    <div className="text-xs text-muted-foreground">PostgreSQL, MongoDB, Prisma</div>
+        {/* Certifications Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            📜 Certifications
+          </h2>
+          <Card>
+            <CardContent className="pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {certifications.map((cert, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+                  >
+                    <svg
+                      className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>{cert}</span>
                   </div>
-                </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Cloud className="w-5 h-5 text-orange-600" />
-                  <div>
-                    <div className="font-medium text-sm">Cloud Services</div>
-                    <div className="text-xs text-muted-foreground">AWS, Vercel, Docker deployment</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
-                  <Smartphone className="w-5 h-5 text-indigo-600" />
-                  <div>
-                    <div className="font-medium text-sm">Testing Tools</div>
-                    <div className="text-xs text-muted-foreground">Jest, Cypress, React Testing Library</div>
-                  </div>
-                </div>
-                
-                <Separator />
-                
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  I believe in using the right tools for the job. My setup focuses on productivity, 
-                  clean code, and efficient workflows that help me deliver quality software.
-                </p>
-              </CardContent>
-            </Card>
+        {/* Contact CTA */}
+        <div className="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Let&apos;s Work Together!
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:your.email@example.com"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              Send Email
+            </a>
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              View GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>
