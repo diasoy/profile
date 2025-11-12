@@ -1,14 +1,203 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { blogPosts, getFeaturedPosts } from '@/data/blog';
 import { notes } from '@/data/notes';
 import { projects, getFeaturedProjects } from '@/data/project';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const projectsSectionRef = useRef<HTMLElement>(null);
+  const notesSectionRef = useRef<HTMLDivElement>(null);
+  const blogSectionRef = useRef<HTMLDivElement>(null);
+  const statsSectionRef = useRef<HTMLElement>(null);
+  const ctaSectionRef = useRef<HTMLElement>(null);
+
   const featuredBlogPosts = getFeaturedPosts().slice(0, 3);
   const latestNotes = notes.slice(0, 3);
   const featuredProjectsList = getFeaturedProjects().slice(0, 3);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero animations
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      
+      tl.from(avatarRef.current, {
+        scale: 0,
+        rotation: 360,
+        duration: 1,
+        ease: 'back.out(1.7)',
+      })
+      .from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+      }, '-=0.5')
+      .from(descRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+      }, '-=0.6')
+      .from(buttonsRef.current?.children || [], {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+      }, '-=0.4');
+
+      // Floating animation for avatar
+      gsap.to(avatarRef.current, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+      });
+
+      // Projects section animation
+      if (projectsSectionRef.current) {
+        gsap.from(projectsSectionRef.current.querySelector('h2'), {
+          scrollTrigger: {
+            trigger: projectsSectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+          x: -50,
+          opacity: 0,
+          duration: 0.8,
+        });
+
+        gsap.from(projectsSectionRef.current.querySelectorAll('.project-card'), {
+          scrollTrigger: {
+            trigger: projectsSectionRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none reverse',
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.15,
+        });
+      }
+
+      // Notes section animation
+      if (notesSectionRef.current) {
+        gsap.from(notesSectionRef.current.querySelector('h2'), {
+          scrollTrigger: {
+            trigger: notesSectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+          x: -50,
+          opacity: 0,
+          duration: 0.8,
+        });
+
+        gsap.from(notesSectionRef.current.querySelectorAll('.note-item'), {
+          scrollTrigger: {
+            trigger: notesSectionRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none reverse',
+          },
+          x: -30,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        });
+      }
+
+      // Blog section animation
+      if (blogSectionRef.current) {
+        gsap.from(blogSectionRef.current.querySelector('h2'), {
+          scrollTrigger: {
+            trigger: blogSectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+          x: 50,
+          opacity: 0,
+          duration: 0.8,
+        });
+
+        gsap.from(blogSectionRef.current.querySelectorAll('.blog-item'), {
+          scrollTrigger: {
+            trigger: blogSectionRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none reverse',
+          },
+          x: 30,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        });
+      }
+
+      // Stats section animation
+      if (statsSectionRef.current) {
+        gsap.from(statsSectionRef.current.querySelectorAll('.stat-card'), {
+          scrollTrigger: {
+            trigger: statsSectionRef.current,
+            start: 'top 75%',
+            toggleActions: 'play none none reverse',
+          },
+          scale: 0.8,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'back.out(1.7)',
+        });
+
+        // Animate numbers
+        const statNumbers = statsSectionRef.current.querySelectorAll('.stat-number');
+        statNumbers.forEach((element) => {
+          gsap.from(element, {
+            scrollTrigger: {
+              trigger: statsSectionRef.current,
+              start: 'top 75%',
+              toggleActions: 'play none none reverse',
+            },
+            textContent: 0,
+            duration: 1.5,
+            ease: 'power1.out',
+            snap: { textContent: 1 },
+            onUpdate: function() {
+              const current = Math.ceil(parseFloat(this.targets()[0].textContent));
+              if (element.textContent?.includes('+')) {
+                this.targets()[0].textContent = current + '+';
+              }
+            },
+          });
+        });
+      }
+
+      // CTA section animation
+      if (ctaSectionRef.current) {
+        gsap.from(ctaSectionRef.current, {
+          scrollTrigger: {
+            trigger: ctaSectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1,
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -23,8 +212,8 @@ export default function Home() {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <section className="text-center mb-20">
-          <div className="flex justify-center mb-8">
+        <section ref={heroRef} className="text-center mb-20">
+          <div ref={avatarRef} className="flex justify-center mb-8">
             <div className="relative">
               <div className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 flex items-center justify-center">
                 <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
@@ -34,11 +223,11 @@ export default function Home() {
             </div>
           </div>
           
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 ref={titleRef} className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Hey, I&apos;m Dias!
           </h1>
           
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto">
+          <p ref={descRef} className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto">
             Full Stack Developer & Tech Enthusiast. Building scalable web applications 
             and sharing knowledge through{' '}
             <Link href="/blog" className="text-purple-500 hover:text-purple-600 font-medium transition-colors">
@@ -47,11 +236,12 @@ export default function Home() {
             and open-source contributions.
           </p>
           
-          <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
+          
+          <p ref={titleRef} className="text-lg text-gray-500 dark:text-gray-400 mb-8">
             Passionate about clean code, modern web technologies, and continuous learning.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/about"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-200"
@@ -62,13 +252,13 @@ export default function Home() {
               href="/projects"
               className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
             >
-              � View Projects
+              🚀 View Projects
             </Link>
           </div>
         </section>
 
         {/* Featured Projects Section */}
-        <section className="mb-20">
+        <section ref={projectsSectionRef} className="mb-20">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Projects</h2>
             <Link 
@@ -83,7 +273,7 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {featuredProjectsList.map((project) => (
-              <Card key={project.id} className="hover:shadow-lg transition-shadow duration-200">
+              <Card key={project.id} className="project-card hover:shadow-lg transition-shadow duration-200">
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
                     <Badge variant="outline" className="capitalize">
@@ -118,7 +308,7 @@ export default function Home() {
         {/* Content Sections */}
         <section className="grid md:grid-cols-2 gap-12 mb-20">
           {/* Notes Section */}
-          <div>
+          <div ref={notesSectionRef}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white">📝 Notes</h2>
               <Link 
@@ -135,7 +325,7 @@ export default function Home() {
               {latestNotes.map((note) => (
                 <div 
                   key={note.id}
-                  className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="note-item block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h3 className="font-medium text-gray-900 dark:text-white">
@@ -162,7 +352,7 @@ export default function Home() {
           </div>
 
           {/* Blog Section */}
-          <div>
+          <div ref={blogSectionRef}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white">📰 Blog</h2>
               <Link 
@@ -179,7 +369,7 @@ export default function Home() {
               {featuredBlogPosts.map((post) => (
                 <div 
                   key={post.id}
-                  className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="blog-item block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h3 className="font-medium text-gray-900 dark:text-white">
@@ -205,11 +395,11 @@ export default function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="mb-20">
+        <section ref={statsSectionRef} className="mb-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Card>
+            <Card className="stat-card">
               <CardHeader className="pb-3">
-                <CardTitle className="text-3xl font-bold text-purple-500">
+                <CardTitle className="stat-number text-3xl font-bold text-purple-500">
                   {projects.length}
                 </CardTitle>
               </CardHeader>
@@ -220,9 +410,9 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="stat-card">
               <CardHeader className="pb-3">
-                <CardTitle className="text-3xl font-bold text-blue-500">
+                <CardTitle className="stat-number text-3xl font-bold text-blue-500">
                   {blogPosts.length}
                 </CardTitle>
               </CardHeader>
@@ -233,9 +423,9 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="stat-card">
               <CardHeader className="pb-3">
-                <CardTitle className="text-3xl font-bold text-green-500">
+                <CardTitle className="stat-number text-3xl font-bold text-green-500">
                   {notes.length}
                 </CardTitle>
               </CardHeader>
@@ -246,9 +436,9 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="stat-card">
               <CardHeader className="pb-3">
-                <CardTitle className="text-3xl font-bold text-orange-500">
+                <CardTitle className="stat-number text-3xl font-bold text-orange-500">
                   5+
                 </CardTitle>
               </CardHeader>
@@ -262,7 +452,7 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="text-center py-12 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 rounded-lg">
+        <section ref={ctaSectionRef} className="text-center py-12 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 rounded-lg">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Let&apos;s Connect!
           </h2>
