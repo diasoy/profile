@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { blogPosts, getAllCategories } from '@/data/blog';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -63,19 +64,19 @@ export default function Blog() {
                 .filter(post => post.featured)
                 .slice(0, 4)
                 .map((post) => (
-                  <Card 
-                    key={post.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 cursor-pointer"
-                  >
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-2">
-                        <Badge variant="outline" className="mb-2">
-                          {post.category}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        {post.title}
-                      </CardTitle>
+                  <Link key={post.id} href={`/blog/${post.slug}`}>
+                    <Card 
+                      className="hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+                    >
+                      <CardHeader>
+                        <div className="flex items-start justify-between mb-2">
+                          <Badge variant="outline" className="mb-2">
+                            {post.category}
+                          </Badge>
+                        </div>
+                        <CardTitle className="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                          {post.title}
+                        </CardTitle>
                       <CardDescription>{post.excerpt}</CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -91,6 +92,7 @@ export default function Blog() {
                       </div>
                     </CardContent>
                   </Card>
+                  </Link>
                 ))}
             </div>
           </div>
@@ -103,21 +105,21 @@ export default function Blog() {
           </h2>
           <div className="space-y-6">
             {filteredPosts.map((post) => (
-              <Card 
-                key={post.id}
-                className="hover:shadow-lg transition-shadow duration-200 cursor-pointer"
-              >
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                    <div className="flex-grow">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline">
-                          {post.category}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-2xl mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        {post.title}
-                      </CardTitle>
+              <Link key={post.id} href={`/blog/${post.slug}`}>
+                <Card 
+                  className="hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+                >
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                      <div className="flex-grow">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge variant="outline">
+                            {post.category}
+                          </Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                          {post.title}
+                        </CardTitle>
                       <CardDescription className="text-base">
                         {post.excerpt}
                       </CardDescription>
@@ -141,6 +143,7 @@ export default function Blog() {
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
         </div>

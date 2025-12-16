@@ -138,7 +138,7 @@ export default function Navbar() {
           <div className="mb-8">
             <h2 className="text-gray-900 dark:text-white font-semibold mb-3">About Me</h2>
             <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
-              I'm <span className="text-green-600 dark:text-green-400">Dias Norman</span>, software engineer and open-source creator. This is my digital garden. 🌱
+              I&apos;m <span className="text-green-600 dark:text-green-400">Dias Norman</span>, software engineer and open-source creator. This is my digital garden. 🌱
             </p>
           </div>
 

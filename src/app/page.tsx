@@ -76,7 +76,7 @@ export default function Home() {
             {featuredBlogPosts.map((post) => (
               <Link
                 key={post.id}
-                href={`/blog/${post.id}`}
+                href={`/blog/${post.slug}`}
                 className="block group"
               >
                 <div className="flex items-baseline justify-between gap-4 hover:opacity-80 transition-opacity">
