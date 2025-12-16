@@ -88,7 +88,7 @@ export default function Notes() {
               {pinnedNotes.map((note) => (
                 <Card 
                   key={note.id}
-                  className="hover:shadow-lg transition-shadow duration-200 border-2 border-blue-200 dark:border-blue-800"
+                  className="hover:shadow-lg transition-shadow duration-200 "
                 >
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">

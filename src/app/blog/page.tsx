@@ -72,7 +72,6 @@ export default function Blog() {
                         <Badge variant="outline" className="mb-2">
                           {post.category}
                         </Badge>
-                        <span className="text-yellow-500 text-xl">⭐</span>
                       </div>
                       <CardTitle className="text-xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         {post.title}
@@ -89,7 +88,6 @@ export default function Blog() {
                       </div>
                       <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
                         <span>{formatDate(post.publishedAt)}</span>
-                        <span>{post.readTime}</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -116,9 +114,6 @@ export default function Blog() {
                         <Badge variant="outline">
                           {post.category}
                         </Badge>
-                        {post.featured && (
-                          <span className="text-yellow-500" title="Featured">⭐</span>
-                        )}
                       </div>
                       <CardTitle className="text-2xl mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         {post.title}
@@ -143,7 +138,6 @@ export default function Blog() {
                       <span>•</span>
                       <span>{formatDate(post.publishedAt)}</span>
                     </div>
-                    <span>{post.readTime}</span>
                   </div>
                 </CardContent>
               </Card>

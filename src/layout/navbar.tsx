@@ -53,8 +53,8 @@ export default function Navbar() {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-green-600">
+          <Link target="_blank" href="/" className="flex items-center space-x-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded">
               <span className="text-xs">💻</span>
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
@@ -62,14 +62,14 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <button
               onClick={toggleDarkMode}
-              className="rounded-full p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="rounded-full p-2 text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              className="text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -85,7 +85,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-3 px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  className="flex items-center space-x-3 px-3 py-2 text-base font-medium text-gray-700 hover:cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="text-xl">{item.icon}</span>
@@ -96,14 +96,17 @@ export default function Navbar() {
             <div className="text-sm border-t border-gray-200 dark:border-gray-800 pt-4">
               <p className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</p>
               <div className="flex flex-col space-y-2 text-gray-600 dark:text-gray-400">
-                <Link href="mailto:diasnormann@gmail.com" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="mailto:diasnormann@gmail.com" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
                   Email
                 </Link>
-                <Link href="https://linkedin.com/in/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
                   LinkedIn
                 </Link>
-                <Link href="https://instagram.com/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="https://instagram.com/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
                   Instagram
+                </Link>
+                <Link target="_blank" href="https://github.com/diasoy" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  Github
                 </Link>
               </div>
             </div>
@@ -117,14 +120,14 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center justify-between mb-8">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded bg-green-600">
+              <div className="flex h-6 w-6 items-center justify-center rounded">
                 <span className="text-xs">💻</span>
               </div>
               <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
             </Link>
             <button
               onClick={toggleDarkMode}
-              className="rounded-full p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="rounded-full p-2 text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -159,14 +162,17 @@ export default function Navbar() {
           <div className="text-sm">
             <h3 className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</h3>
             <div className="flex flex-col space-y-2">
-              <Link href="mailto:diasnormann@gmail.com" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="mailto:diasnormann@gmail.com" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 Email
               </Link>
-              <Link href="https://linkedin.com/in/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 LinkedIn
               </Link>
-              <Link href="https://instagram.com/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="https://instagram.com/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 Instagram
+              </Link>
+              <Link target="_blank" href="https://github.com/diasoy" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                Github
               </Link>
             </div>
           </div>
