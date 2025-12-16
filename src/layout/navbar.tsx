@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-purple-600">
+            <div className="flex h-6 w-6 items-center justify-center rounded bg-green-600">
               <span className="text-xs">💻</span>
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
@@ -96,14 +96,14 @@ export default function Navbar() {
             <div className="text-sm border-t border-gray-200 dark:border-gray-800 pt-4">
               <p className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</p>
               <div className="flex flex-col space-y-2 text-gray-600 dark:text-gray-400">
-                <Link href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                  Email signup
+                <Link href="mailto:diasnormann@gmail.com" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  Email
                 </Link>
-                <Link href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                  Bluesky
+                <Link href="https://linkedin.com/in/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  LinkedIn
                 </Link>
-                <Link href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                  RSS feed
+                <Link href="https://instagram.com/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  Instagram
                 </Link>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center justify-between mb-8">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded bg-purple-600">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-green-600">
                 <span className="text-xs">💻</span>
               </div>
               <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
           <div className="mb-8">
             <h2 className="text-gray-900 dark:text-white font-semibold mb-3">About Me</h2>
             <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
-              I'm <span className="text-purple-600 dark:text-purple-400">Dias Norman</span>, software engineer and open-source creator. This is my digital garden. 🌱
+              I'm <span className="text-green-600 dark:text-green-400">Dias Norman</span>, software engineer and open-source creator. This is my digital garden. 🌱
             </p>
           </div>
 
@@ -159,14 +159,14 @@ export default function Navbar() {
           <div className="text-sm">
             <h3 className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</h3>
             <div className="flex flex-col space-y-2">
-              <Link href="#" className="text-gray-700 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                Email signup
+              <Link href="mailto:diasnormann@gmail.com" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                Email
               </Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                Bluesky
+              <Link href="https://linkedin.com/in/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                LinkedIn
               </Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                RSS feed
+              <Link href="https://instagram.com/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                Instagram
               </Link>
             </div>
           </div>

@@ -30,7 +30,7 @@ export default function Home() {
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 I&apos;m a software engineer, open-source creator, and former professional chef. 
                 I&apos;ve been making websites since 1998 and{' '}
-                <Link href="/blog" className="text-purple-400 hover:text-purple-300 underline transition-colors">
+                <Link href="/blog" className="text-green-500 hover:text-green-400 underline transition-colors">
                   writing on this blog
                 </Link>{' '}
                 for over ten years!
@@ -60,7 +60,7 @@ export default function Home() {
 
             {/* Illustration */}
             <div className="flex-shrink-0">
-              <div className="w-64 h-64 bg-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-64 h-64 bg-green-600 rounded-full flex items-center justify-center">
                 <div className="text-8xl">🐏</div>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function Home() {
                 className="block group"
               >
                 <div className="flex items-baseline justify-between gap-4 hover:opacity-80 transition-opacity">
-                  <h3 className="text-lg text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors flex-1">
+                  <h3 className="text-lg text-green-600 dark:text-green-400 group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors flex-1">
                     {post.title}
                   </h3>
                   <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap">
@@ -107,7 +107,7 @@ export default function Home() {
                 className="block group"
               >
                 <div className="flex items-baseline justify-between gap-4 hover:opacity-80 transition-opacity">
-                  <h3 className="text-lg text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors flex-1">
+                  <h3 className="text-lg text-green-600 dark:text-green-400 group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors flex-1">
                     {note.title}
                   </h3>
                   <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap">
