@@ -5,6 +5,7 @@ import { notes, getAllNoteCategories, type Note } from '@/data/notes';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { formatDate } from '@/utils/formatDate';
 
 export default function Notes() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -18,15 +19,6 @@ export default function Notes() {
   // Separate pinned and regular notes
   const pinnedNotes = filteredNotes.filter(note => note.pinned);
   const regularNotes = filteredNotes.filter(note => !note.pinned);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
-    });
-  };
 
   const getCategoryIcon = (category: Note['category']) => {
     const icons = {

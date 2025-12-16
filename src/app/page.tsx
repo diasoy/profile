@@ -3,18 +3,11 @@
 import Link from 'next/link';
 import { blogPosts } from '@/data/blog';
 import { notes } from '@/data/notes';
+import { formatDate } from '@/utils/formatDate';
 
 export default function Home() {
   const featuredBlogPosts = blogPosts.slice(0, 5);
   const latestNotes = notes.slice(0, 3);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'long', 
-      day: 'numeric'
-    });
-  };
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-300">

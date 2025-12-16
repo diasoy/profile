@@ -5,6 +5,7 @@ import { blogPosts, getAllCategories } from '@/data/blog';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { formatDate } from '@/utils/formatDate';
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -14,15 +15,6 @@ export default function Blog() {
   const filteredPosts = blogPosts.filter((post) => {
     return selectedCategory === 'all' || post.category === selectedCategory;
   });
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">

@@ -1,99 +1,13 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { skills } from '@/data/skills';
+import { education } from '@/data/education';
+import { certifications } from '@/data/certifications';
+import { experience } from '@/data/experience';
+
 
 export default function AboutPage() {
-  const skills = {
-    frontend: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'JavaScript',
-      'TailwindCSS',
-      'HTML/CSS',
-      'Vue.js',
-      'Redux',
-    ],
-    backend: [
-      'Node.js',
-      'Express',
-      'NestJS',
-      'GraphQL',
-      'REST API',
-      'PostgreSQL',
-      'MongoDB',
-      'Redis',
-    ],
-    mobile: [
-      'React Native',
-      'Expo',
-      'Flutter',
-      'iOS',
-      'Android',
-    ],
-    tools: [
-      'Git',
-      'Docker',
-      'AWS',
-      'Vercel',
-      'Firebase',
-      'Prisma',
-      'Jest',
-      'Postman',
-    ],
-  };
-
-  const experience = [
-    {
-      company: 'Tech Innovations Inc.',
-      position: 'Senior Full Stack Developer',
-      period: '2023 - Present',
-      description: 'Leading development of enterprise web applications using Next.js and Node.js. Managing a team of 5 developers and implementing best practices.',
-      achievements: [
-        'Reduced application load time by 40%',
-        'Implemented CI/CD pipeline',
-        'Mentored junior developers',
-      ],
-    },
-    {
-      company: 'Digital Solutions Ltd.',
-      position: 'Full Stack Developer',
-      period: '2021 - 2023',
-      description: 'Developed and maintained multiple web applications for clients. Collaborated with designers and project managers to deliver high-quality solutions.',
-      achievements: [
-        'Built 15+ client projects',
-        'Improved code quality with testing',
-        'Implemented responsive designs',
-      ],
-    },
-    {
-      company: 'StartUp Studio',
-      position: 'Frontend Developer',
-      period: '2020 - 2021',
-      description: 'Created engaging user interfaces using React and modern CSS frameworks. Worked closely with UX designers to implement pixel-perfect designs.',
-      achievements: [
-        'Developed reusable component library',
-        'Increased user engagement by 25%',
-        'Optimized web performance',
-      ],
-    },
-  ];
-
-  const education = [
-    {
-      institution: 'University of Technology',
-      degree: 'Bachelor of Computer Science',
-      period: '2016 - 2020',
-      description: 'Focused on software engineering, algorithms, and data structures. Graduated with honors.',
-    },
-  ];
-
-  const certifications = [
-    'AWS Certified Solutions Architect',
-    'Google Cloud Professional Developer',
-    'Meta React Advanced Certification',
-    'MongoDB Developer Certification',
-  ];
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
