@@ -53,7 +53,7 @@ export default function Navbar() {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link target="_blank" href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <div className="flex h-6 w-6 items-center justify-center rounded">
               <span className="text-xs">💻</span>
             </div>
