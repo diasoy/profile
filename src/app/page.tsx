@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { galleryImages } from "@/data/gallery";
+import { currentActivities, lastUpdated } from "@/data/current-activities";
+import { softwareTools, hardwareItems, websiteDescription } from "@/data/tools";
 
 export default function Home() {
   return (
@@ -90,26 +92,19 @@ export default function Home() {
               What I&apos;m doing now?
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
-              Updated December 28, 2025
+              Updated {lastUpdated}
             </p>
             <hr />
 
             <ul className="space-y-3 ml-6 mt-6">
-              <li className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500">
-                Working on my thesis
-              </li>
-              <li className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500">
-                Looking for internship opportunities
-              </li>
-              <li className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500">
-                Trail running and road running
-              </li>
-              <li className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500">
-                Watching K-dramas
-              </li>
-              <li className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500">
-                Playing games
-              </li>
+              {currentActivities.map((item) => (
+                <li 
+                  key={item.id}
+                  className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500"
+                >
+                  {item.activity}
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -127,22 +122,14 @@ export default function Home() {
               Software
             </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
-              This website is built with Next.js and uses the React framework.
+              {websiteDescription}
             </p>
             <ul className="space-y-2 ml-6 list-disc">
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Coding</span>: Visual Studio
-                Code
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Terminal</span>: Git Bash
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Notes</span>: Notion
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Browser</span>: Brave
-              </li>
+              {softwareTools.map((tool) => (
+                <li key={tool.id} className="text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">{tool.category}</span>: {tool.name}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -152,33 +139,18 @@ export default function Home() {
               Hardware
             </h3>
             <ul className="space-y-3 ml-6 list-disc">
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Laptop</span>: Lenovo Thinkpad
-                X280, Intel Core i5, 8GB RAM
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Gaming PC</span>
-                <ul className="ml-6 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
-                  <li>CPU: AMD Ryzen 5 5600G</li>
-                  <li>Motherboard: B550M HVS SE</li>
-                  <li>Memory: 16GB</li>
-                  <li>Storage: NVME 256GB, SATA 512GB</li>
-                  <li>GPU: Radeon Vega 7</li>
-                </ul>
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Monitor</span>: Xiaomi G24I 2026
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Keyboard</span>: Rexus
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Mouse</span>: Ryunix Fujin
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                <span className="font-semibold">Headphones</span>: Rexus Daxa
-                Sedna
-              </li>
+              {hardwareItems.map((item) => (
+                <li key={item.id} className="text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">{item.category}</span>: {item.name}
+                  {item.specs && (
+                    <ul className="ml-6 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+                      {item.specs.map((spec, index) => (
+                        <li key={index}>{spec}</li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </section>
