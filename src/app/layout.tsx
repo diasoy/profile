@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/layout/navbar";
+import Footer from "@/layout/footer";
 
 
 const lato = Lato({
@@ -29,6 +30,9 @@ export default function RootLayout({
         {/* Main content with margin for sidebar */}
         <div className="lg:ml-80 pt-20 lg:pt-0">
           {children}
+        </div>
+        <div className="lg:ml-80">
+          <Footer />
         </div>
       </body>
     </html>
