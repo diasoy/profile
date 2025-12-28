@@ -11,7 +11,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Dias Norman - Software Engineer",
+  title: "Dias Norman's Website",
   description: "Personal website and digital garden of Dias Norman, software engineer and open-source creator",
 };
 
