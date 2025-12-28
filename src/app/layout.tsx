@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/layout/navbar";
 import Footer from "@/layout/footer";
 
-
-const lato = Lato({
-  variable: "--font-lato",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${lato.variable} font-sans antialiased bg-white dark:bg-gray-900`}
+        className={`${inter.variable} font-sans antialiased bg-white dark:bg-gray-900`}
       >
         <Navbar />
         {/* Main content with margin for sidebar */}

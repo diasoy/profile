@@ -1,20 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { blogPosts } from "@/data/blog";
-import { notes } from "@/data/notes";
-import { projects } from "@/data/project";
-import { formatDate } from "@/utils/formatDate";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { galleryImages } from "@/data/gallery";
 
 export default function Home() {
-  const featuredBlogPosts = blogPosts.slice(0, 5);
-  const latestNotes = notes.slice(0, 3);
-  const featuredProjects = projects
-    .filter((project) => project.featured)
-    .slice(0, 6);
-
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-300">
       <div className="mx-auto max-w-5xl px-6 lg:px-12 py-12">
@@ -76,42 +66,20 @@ export default function Home() {
           <hr />
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
-            <div className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
-              <Image
-                src="/images/image1.jpg"
-                alt="Gallery Image 1"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
-              <Image
-                src="/images/image1.jpg"
-                alt="Gallery Image 2"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
-              <Image
-                src="/images/image1.jpg"
-                alt="Gallery Image 3"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
-              <Image
-                src="/images/image1.jpg"
-                alt="Gallery Image 4"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
+            {galleryImages.map((image) => (
+              <div 
+                key={image.id}
+                className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={300}
+                  height={300}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            ))}
           </div>
         </section>
 
