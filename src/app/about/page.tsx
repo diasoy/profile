@@ -56,7 +56,7 @@ export default function AboutPage() {
       <div className="relative mx-auto max-w-6xl px-6 py-14 lg:px-10 lg:py-16">
         <section className="mb-14">
           <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="space-y-6">
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-6">
               <div className="flex flex-wrap gap-2">
                 <Badge
                   variant="secondary"
@@ -100,10 +100,11 @@ export default function AboutPage() {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-3">
-                {stats.map((stat) => (
+                {stats.map((stat, index) => (
                   <div
                     key={stat.label}
-                    className="rounded-2xl border border-gray-200/80 bg-white/80 px-4 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-emerald-400/70 hover:shadow-lg dark:border-gray-800/80 dark:bg-gray-900/70 dark:hover:border-emerald-400/50"
+                    className="rounded-2xl border border-gray-200/80 bg-white/80 px-4 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-emerald-400/70 hover:shadow-lg animate-in fade-in slide-in-from-bottom-3 dark:border-gray-800/80 dark:bg-gray-900/70 dark:hover:border-emerald-400/50"
+                    style={{ animationDelay: `${index * 90}ms` }}
                   >
                     <p className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-3xl font-semibold text-transparent">
                       {stat.value}
@@ -119,37 +120,40 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <Card className="relative overflow-hidden border-gray-200/70 bg-gradient-to-br from-white/70 via-white/40 to-emerald-50/50 shadow-xl dark:border-gray-800/70 dark:from-gray-900/80 dark:via-gray-900/60 dark:to-emerald-900/20">
-              <div className="absolute right-3 top-3 h-28 w-28 rounded-full bg-emerald-400/15 blur-2xl" />
-              <div className="absolute -left-10 -bottom-12 h-36 w-36 rounded-full bg-blue-500/15 blur-2xl dark:bg-blue-500/20" />
-              <CardHeader className="relative">
-                <CardTitle className="text-2xl text-gray-900 dark:text-white">
-                  How I work
-                </CardTitle>
-                <CardDescription className="text-base text-gray-700 dark:text-gray-300">
-                  I thrive where design, engineering, and delivery intersect.
-                  Here&apos;s what that looks like day-to-day.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative space-y-4">
-                {focusAreas.map((area) => (
-                  <div
-                    key={area.title}
-                    className="flex items-start gap-3 rounded-xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm dark:border-gray-800/70 dark:bg-gray-900/70"
-                  >
-                    <div className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-emerald-400 to-blue-500" />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-white">
-                        {area.title}
-                      </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {area.copy}
-                      </p>
+            <div className="animate-in fade-in slide-in-from-top-6">
+              <Card className="relative overflow-hidden border-gray-200/70 bg-gradient-to-br from-white/70 via-white/40 to-emerald-50/50 shadow-xl dark:border-gray-800/70 dark:from-gray-900/80 dark:via-gray-900/60 dark:to-emerald-900/20">
+                <div className="absolute right-3 top-3 h-28 w-28 rounded-full bg-emerald-400/15 blur-2xl" />
+                <div className="absolute -left-10 -bottom-12 h-36 w-36 rounded-full bg-blue-500/15 blur-2xl dark:bg-blue-500/20" />
+                <CardHeader className="relative">
+                  <CardTitle className="text-2xl text-gray-900 dark:text-white">
+                    How I work
+                  </CardTitle>
+                  <CardDescription className="text-base text-gray-700 dark:text-gray-300">
+                    I thrive where design, engineering, and delivery intersect.
+                    Here&apos;s what that looks like day-to-day.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative space-y-4">
+                  {focusAreas.map((area, index) => (
+                    <div
+                      key={area.title}
+                      className="flex items-start gap-3 rounded-xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm animate-in fade-in slide-in-from-right-2 dark:border-gray-800/70 dark:bg-gray-900/70"
+                      style={{ animationDelay: `${index * 90}ms` }}
+                    >
+                      <div className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-emerald-400 to-blue-500" />
+                      <div>
+                        <p className="font-semibold text-gray-900 dark:text-white">
+                          {area.title}
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          {area.copy}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
@@ -173,7 +177,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Card className="border-gray-200/70 shadow-md dark:border-gray-800/70">
+            <Card className="border-gray-200/70 shadow-md animate-in fade-in slide-in-from-left-4 dark:border-gray-800/70">
               <CardHeader>
                 <CardTitle className="text-xl text-gray-900 dark:text-white">
                   What I optimize for
@@ -216,7 +220,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-200/70 shadow-md dark:border-gray-800/70">
+            <Card className="border-gray-200/70 shadow-md animate-in fade-in slide-in-from-right-4 dark:border-gray-800/70">
               <CardHeader>
                 <CardTitle className="text-xl text-gray-900 dark:text-white">
                   Stacks & tools in rotation
@@ -263,7 +267,11 @@ export default function AboutPage() {
               const isLast = index === experience.length - 1;
 
               return (
-                <div key={exp.company} className="relative pl-8 sm:pl-10">
+                <div
+                  key={exp.company}
+                  className="relative pl-8 sm:pl-10 animate-in fade-in slide-in-from-bottom-4"
+                  style={{ animationDelay: `${index * 110}ms` }}
+                >
                   {!isLast && (
                     <div className="absolute left-3 top-6 bottom-[-24px] w-px bg-gradient-to-b from-emerald-500/40 via-emerald-500/20 to-transparent dark:from-emerald-400/40 dark:via-emerald-400/20 sm:left-4" />
                   )}
@@ -312,7 +320,7 @@ export default function AboutPage() {
 
         <section className="mb-4">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Card className="border-gray-200/70 shadow-md dark:border-gray-800/70">
+            <Card className="border-gray-200/70 shadow-md animate-in fade-in slide-in-from-left-4 dark:border-gray-800/70">
               <CardHeader>
                 <CardTitle className="text-xl text-gray-900 dark:text-white">
                   Education
@@ -351,7 +359,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-200/70 shadow-md dark:border-gray-800/70">
+            <Card className="border-gray-200/70 shadow-md animate-in fade-in slide-in-from-right-4 dark:border-gray-800/70">
               <CardHeader>
                 <CardTitle className="text-xl text-gray-900 dark:text-white">
                   Certifications

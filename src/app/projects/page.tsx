@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const categories = ['all', 'web', 'mobile', 'api'];
+  const categories = ['all', 'web', 'mobile'];
 
   const filteredProjects = projects.filter((project) => {
     return selectedCategory === 'all' || project.category === selectedCategory;
