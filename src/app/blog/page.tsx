@@ -1,25 +1,21 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import { blogPosts, getAllCategories } from '@/data/blog';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { formatDate } from '@/utils/formatDate';
 
 export default function Blog() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  
-  const categories = ['all', ...getAllCategories()];
-  
-  const filteredPosts = blogPosts.filter((post) => {
-    return selectedCategory === 'all' || post.category === selectedCategory;
-  });
-
   return (
-    <main className="min-h-screen flex justify-center items-center bg-white dark:bg-gray-900">
-      coming soon...
+    <main className="min-h-screen text-foreground">
+      <div className="mx-auto flex max-w-3xl items-center justify-center px-6 py-20">
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle className="text-3xl">Blog</CardTitle>
+            <CardDescription>
+              Longer writing, tutorials, and stories.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">Coming soon...</p>
+          </CardContent>
+        </Card>
+      </div>
     </main>
   );
 }

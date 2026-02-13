@@ -6,70 +6,69 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-300">
-      <div className="mx-auto max-w-5xl px-6 lg:px-12 py-12">
+    <main className="min-h-screen text-foreground">
+      <div className="mx-auto max-w-5xl px-6 py-12 lg:px-12">
         <header className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            💁🏻 About Me
+          <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
+            About Me
           </h1>
-          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-justify text-lg leading-relaxed text-muted-foreground">
             {aboutMe.firstDesc}
           </p>
           <br />
-          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-justify text-lg leading-relaxed text-muted-foreground">
             {aboutMe.secondDesc}
           </p>
           <br />
-          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-justify text-lg leading-relaxed text-muted-foreground">
             {aboutMe.thirdDesc}
           </p>
         </header>
 
         <section className="my-8">
           <div className="mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
               Gallery
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-muted-foreground">
               A glimpse into my journey and experiences
             </p>
           </div>
           <hr />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {galleryImages.map((image) => (
               <div
                 key={image.id}
-                className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square"
+                className="glass-surface group relative aspect-square overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   width={300}
                   height={300}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
             ))}
           </div>
         </section>
 
-        {/* What I'm Doing Now Section */}
         <section className="my-16">
-          <div className="">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          <div>
+            <h2 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">
               What I&apos;m doing now?
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
+            <p className="mb-6 text-sm italic text-muted-foreground">
               Updated {lastUpdated}
             </p>
             <hr />
 
-            <ul className="space-y-3 ml-6 mt-6">
+            <ul className="ml-6 mt-6 space-y-3">
               {currentActivities.map((item) => (
                 <li
                   key={item.id}
-                  className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500"
+                  className="relative text-foreground/90 before:absolute before:-left-6 before:text-muted-foreground before:content-['->']"
                 >
                   {item.activity}
                 </li>
@@ -78,24 +77,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Tools Section */}
         <section className="my-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+          <h2 className="mb-8 text-3xl font-bold text-foreground md:text-4xl">
             Tools
           </h2>
           <hr />
 
-          {/* Software */}
           <div className="mb-10 mt-4">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+            <h3 className="mb-4 text-2xl font-semibold text-foreground">
               Software
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
-              {websiteDescription}
-            </p>
-            <ul className="space-y-2 ml-6 list-disc">
+            <p className="mb-4 text-foreground/90">{websiteDescription}</p>
+            <ul className="ml-6 list-disc space-y-2">
               {softwareTools.map((tool) => (
-                <li key={tool.id} className="text-gray-700 dark:text-gray-300">
+                <li key={tool.id} className="text-foreground/90">
                   <span className="font-semibold">{tool.category}</span>:{" "}
                   {tool.name}
                 </li>
@@ -103,18 +98,17 @@ export default function AboutPage() {
             </ul>
           </div>
 
-          {/* Hardware */}
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+            <h3 className="mb-4 text-2xl font-semibold text-foreground">
               Hardware
             </h3>
-            <ul className="space-y-3 ml-6 list-disc">
+            <ul className="ml-6 list-disc space-y-3">
               {hardwareItems.map((item) => (
-                <li key={item.id} className="text-gray-700 dark:text-gray-300">
+                <li key={item.id} className="text-foreground/90">
                   <span className="font-semibold">{item.category}</span>:{" "}
                   {item.name}
                   {item.specs && (
-                    <ul className="ml-6 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+                    <ul className="ml-6 mt-2 space-y-1 text-foreground/90">
                       {item.specs.map((spec, index) => (
                         <li key={index}>{spec}</li>
                       ))}

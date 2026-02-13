@@ -23,14 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${manrope.variable} font-sans antialiased bg-white dark:bg-gray-900`}
+        className={`${manrope.variable} font-sans antialiased text-foreground`}
       >
         <Navbar />
         {/* Main content with margin for sidebar */}
-        <div className="lg:ml-80 pt-20 lg:pt-0">
+        <div className="pt-20 lg:ml-[21.5rem] lg:pt-0">
           {children}
         </div>
-        <div className="lg:ml-80">
+        <div className="lg:ml-[21.5rem]">
           <Footer />
         </div>
       </body>

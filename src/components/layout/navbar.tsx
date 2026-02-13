@@ -1,9 +1,20 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState, type ComponentType } from 'react'
 import Link from 'next/link'
-import { Moon, Sun, Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { FolderKanban, Laptop, Menu, Moon, Sun, UserRound, X } from 'lucide-react'
+
+type NavItem = {
+  name: string
+  href: string
+  icon: ComponentType<{ className?: string }>
+}
+
+const navItems: NavItem[] = [
+  { name: 'Projects', href: '/projects', icon: FolderKanban },
+  { name: 'About Me', href: '/about', icon: UserRound },
+]
 
 export default function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState(true)
@@ -13,10 +24,9 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true)
-    // Check localStorage or default to dark mode
     const savedTheme = localStorage.getItem('theme')
     const prefersDark = savedTheme === 'dark' || !savedTheme
-    
+
     setIsDarkMode(prefersDark)
     if (prefersDark) {
       document.documentElement.classList.add('dark')
@@ -28,7 +38,7 @@ export default function Navbar() {
   const toggleDarkMode = () => {
     const newMode = !isDarkMode
     setIsDarkMode(newMode)
-    
+
     if (newMode) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
@@ -38,46 +48,58 @@ export default function Navbar() {
     }
   }
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return null
-  }
-
-  const navItems = [
-    // { name: 'Blog', href: '/blog', icon: '📰' },
-    // { name: 'Notes', href: '/notes', icon: '📓' },
-    { name: 'Projects', href: '/projects', icon: '☕' },
-    { name: 'About Me', href: '/about', icon: '💁🏻' }
-  ]
-
   const isActiveHref = (href: string) => {
     if (!pathname) return false
     if (href === '/') return pathname === '/'
     return pathname === href || pathname.startsWith(`${href}/`)
   }
 
+  const navItemClass = (href: string, size: 'mobile' | 'desktop') => {
+    const base =
+      size === 'mobile'
+        ? 'flex items-center space-x-3 rounded-xl px-3 py-2 text-base font-medium transition-all duration-200'
+        : 'flex items-center space-x-3 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200'
+
+    if (isActiveHref(href)) {
+      return [
+        base,
+        'bg-white/72 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_10px_24px_rgba(15,23,42,0.08)]',
+        'dark:bg-white/10 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_24px_rgba(0,0,0,0.3)]',
+      ].join(' ')
+    }
+
+    return [
+      base,
+      'text-muted-foreground hover:text-foreground hover:bg-white/46',
+      'dark:hover:bg-white/8',
+    ].join(' ')
+  }
+
+  if (!mounted) {
+    return null
+  }
+
   return (
     <>
-      {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-6 py-4">
+      <div className="glass-surface lg:hidden fixed top-0 left-0 right-0 z-50 rounded-b-3xl border-b px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded">
-              <span className="text-xs">💻</span>
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-glass-border bg-glass-muted/75">
+              <Laptop className="h-4 w-4 text-sky-600 dark:text-sky-300" />
             </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
+            <span className="text-xl font-bold text-foreground">dias.dev</span>
           </Link>
           <div className="flex items-center gap-2">
             <button
               onClick={toggleDarkMode}
-              className="rounded-full p-2 text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="rounded-full border border-glass-border bg-glass-muted/80 p-2 text-muted-foreground hover:cursor-pointer hover:bg-glass-surface hover:text-foreground transition-colors"
               aria-label="Toggle theme"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              className="rounded-full border border-glass-border bg-glass-muted/80 p-2 text-muted-foreground hover:cursor-pointer hover:bg-glass-surface hover:text-foreground transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -85,41 +107,38 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="mt-4 pb-4 border-t border-gray-200 dark:border-gray-800 pt-4">
-            <div className="space-y-1 mb-6">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={[
-                    'flex items-center space-x-3 px-3 py-2 text-base font-medium hover:cursor-pointer transition-colors rounded',
-                    isActiveHref(item.href)
-                      ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
-                      : 'text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                  ].join(' ')}
-                  aria-current={isActiveHref(item.href) ? 'page' : undefined}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="text-xl">{item.icon}</span>
-                  <span>{item.name}</span>
-                </Link>
-              ))}
+          <div className="mt-4 rounded-2xl border border-glass-border bg-glass-muted/75 p-4">
+            <div className="mb-6 space-y-1">
+              {navItems.map((item) => {
+                const Icon = item.icon
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={navItemClass(item.href, 'mobile')}
+                    aria-current={isActiveHref(item.href) ? 'page' : undefined}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{item.name}</span>
+                  </Link>
+                )
+              })}
             </div>
-            <div className="text-sm border-t border-gray-200 dark:border-gray-800 pt-4">
-              <p className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</p>
-              <div className="flex flex-col space-y-2 text-gray-600 dark:text-gray-400">
-                <Link target="_blank" href="mailto:diasnormann@gmail.com" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+            <div className="border-t border-border/70 pt-4 text-sm">
+              <p className="mb-3 font-semibold text-foreground">Stay Connected</p>
+              <div className="flex flex-col space-y-2 text-muted-foreground">
+                <Link target="_blank" href="mailto:diasnormann@gmail.com" className="hover:text-foreground transition-colors">
                   Email
                 </Link>
-                <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="hover:text-foreground transition-colors">
                   LinkedIn
                 </Link>
-                <Link target="_blank" href="https://instagram.com/diasnormann" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="https://instagram.com/diasnormann" className="hover:text-foreground transition-colors">
                   Instagram
                 </Link>
-                <Link target="_blank" href="https://github.com/diasoy" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                <Link target="_blank" href="https://github.com/diasoy" className="hover:text-foreground transition-colors">
                   Github
                 </Link>
               </div>
@@ -128,70 +147,63 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:block fixed left-0 top-0 h-screen w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto">
+      <aside className="glass-surface hidden lg:block fixed left-2 top-2 h-[calc(100vh-1rem)] w-80 overflow-y-auto rounded-3xl">
         <div className="p-8">
-          {/* Logo */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="mb-8 flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded">
-                <span className="text-xs">💻</span>
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-glass-border bg-glass-muted/75">
+                <Laptop className="h-4 w-4 text-sky-600 dark:text-sky-300" />
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">dias.dev</span>
+              <span className="text-xl font-bold text-foreground">dias.dev</span>
             </Link>
             <button
               onClick={toggleDarkMode}
-              className="rounded-full p-2 text-gray-600 hover:cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="rounded-full border border-glass-border bg-glass-muted/80 p-2 text-muted-foreground hover:cursor-pointer hover:bg-glass-surface hover:text-foreground transition-colors"
               aria-label="Toggle theme"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
           </div>
 
-          {/* About Me Section */}
           <div className="mb-8">
-            <h2 className="text-gray-900 dark:text-white font-semibold mb-3">About Me</h2>
-            <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
-              I&apos;m <span className="text-green-600 dark:text-green-400">Dias Norman</span>, software engineer and open-source creator. This is my digital garden. 🌱
+            <h2 className="mb-3 font-semibold text-foreground">About Me</h2>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              I&apos;m <span className="text-sky-600 dark:text-sky-300">Dias Norman</span>, software engineer and open-source creator. This is my digital garden.
             </p>
           </div>
 
-          {/* Navigation */}
-          <nav className="mb-8 border-b border-gray-200 dark:border-gray-800 pb-6">
+          <nav className="mb-8 border-b border-border/70 pb-6">
             <div className="space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={[
-                    'flex items-center space-x-3 px-3 py-2 text-sm font-medium rounded transition-colors',
-                    isActiveHref(item.href)
-                      ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
-                      : 'text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                  ].join(' ')}
-                  aria-current={isActiveHref(item.href) ? 'page' : undefined}
-                >
-                  <span className="text-base">{item.icon}</span>
-                  <span>{item.name}</span>
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const Icon = item.icon
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={navItemClass(item.href, 'desktop')}
+                    aria-current={isActiveHref(item.href) ? 'page' : undefined}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{item.name}</span>
+                  </Link>
+                )
+              })}
             </div>
           </nav>
 
-          {/* Stay Connected */}
           <div className="text-sm">
-            <h3 className="text-gray-900 dark:text-white font-semibold mb-3">Stay Connected</h3>
+            <h3 className="mb-3 font-semibold text-foreground">Stay Connected</h3>
             <div className="flex flex-col space-y-2">
-              <Link target="_blank" href="mailto:diasnormann@gmail.com" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="mailto:diasnormann@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
                 Email
               </Link>
-              <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="https://linkedin.com/in/diasnormann" className="text-muted-foreground hover:text-foreground transition-colors">
                 LinkedIn
               </Link>
-              <Link target="_blank" href="https://instagram.com/diasnormann" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="https://instagram.com/diasnormann" className="text-muted-foreground hover:text-foreground transition-colors">
                 Instagram
               </Link>
-              <Link target="_blank" href="https://github.com/diasoy" className="text-gray-700 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <Link target="_blank" href="https://github.com/diasoy" className="text-muted-foreground hover:text-foreground transition-colors">
                 Github
               </Link>
             </div>

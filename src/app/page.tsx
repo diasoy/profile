@@ -19,7 +19,7 @@ export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-300">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto max-w-5xl px-6 lg:px-12 py-12">
         <header className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-10">
@@ -32,11 +32,11 @@ export default function Home() {
                 <Badge variant="outline">{aboutMe.location}</Badge>
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
                 Hey, I&apos;m {aboutMe.name}
               </h1>
 
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+              <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                 I build web and mobile apps with a focus on clean UX, performance,
                 and maintainable code.
               </p>
@@ -49,7 +49,7 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a href="mailto:diasnormann@gmail.com">
+                  <a href="mailto:diassnorrman@gmail.com">
                     <Mail />
                     Email
                   </a>
@@ -64,8 +64,8 @@ export default function Home() {
             </div>
 
             <div className="mx-auto md:mx-0">
-              <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full border border-gray-200 dark:border-gray-800 bg-linear-to-br from-green-500/20 via-transparent to-blue-500/20 flex items-center justify-center">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden">
+              <div className="glass-surface relative flex h-44 w-44 items-center justify-center rounded-full bg-linear-to-br from-sky-400/25 via-white/20 to-emerald-400/25 md:h-56 md:w-56 dark:from-sky-300/20 dark:via-white/5 dark:to-emerald-300/15">
+                <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-glass-border bg-glass-muted/70 md:h-40 md:w-40">
                   <Image src="/images/profil.jpeg" alt="Profile Picture" width={160} height={160} className="rounded-full object-cover w-full h-full scale-110" />
                 </div>
               </div>
@@ -76,10 +76,10 @@ export default function Home() {
         <section className="my-16">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-6">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">
                 Featured Work
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-muted-foreground">
                 A few projects I&apos;ve shipped recently.
               </p>
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 inline-flex items-center gap-1"
+                        className="glass-accent-link inline-flex items-center gap-1"
                       >
                         Live
                         <ArrowRight className="size-4" />
@@ -134,7 +134,7 @@ export default function Home() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-1"
+                        className="glass-accent-link inline-flex items-center gap-1"
                       >
                         GitHub
                         <ArrowRight className="size-4" />
@@ -155,10 +155,10 @@ export default function Home() {
 
         <section className="my-16">
           <div className="mb-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">
               Skills
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-muted-foreground">
               Tech I use day-to-day.
             </p>
           </div>
@@ -177,14 +177,14 @@ export default function Home() {
 
         <section className="my-16">
           <div className="mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">
               Explore
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-muted-foreground">
               Quick links to what&apos;s on this site.
             </p>
           </div>
-          <hr className="border-gray-200 dark:border-gray-800" />
+          <hr />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
             <Link href="/projects" className="block group">
@@ -192,7 +192,7 @@ export default function Home() {
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">Projects</CardTitle>
-                    <ArrowRight className="size-5 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
+                    <ArrowRight className="size-5 text-muted-foreground transition-colors group-hover:text-foreground" />
                   </div>
                   <CardDescription>
                     Things I&apos;ve built, shipped, and learned from.
@@ -206,7 +206,7 @@ export default function Home() {
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">About</CardTitle>
-                    <ArrowRight className="size-5 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
+                    <ArrowRight className="size-5 text-muted-foreground transition-colors group-hover:text-foreground" />
                   </div>
                   <CardDescription>
                     A bit about me, tools I use, and what I&apos;m doing now.

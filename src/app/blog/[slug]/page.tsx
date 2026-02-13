@@ -18,20 +18,20 @@ export default function BlogDetailPage() {
 
   if (!post) {
     return (
-      <main className="min-h-screen bg-white dark:bg-gray-900">
+      <main className="min-h-screen text-foreground">
         <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="mb-4 text-4xl font-bold text-foreground">
               Post Not Found
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <p className="mb-6 text-muted-foreground">
               The blog post you&apos;re looking for doesn&apos;t exist.
             </p>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+              className="glass-accent-link inline-flex items-center gap-2"
             >
-              ← Back to Blog
+              Back to Blog
             </Link>
           </div>
         </div>
@@ -40,45 +40,41 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Back Button */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline mb-8"
+          className="glass-accent-link mb-8 inline-flex items-center gap-2"
         >
-          ← Back to Blog
+          Back to Blog
         </Link>
 
-        {/* Article Header */}
         <article>
           <header className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="mb-4 flex items-center gap-2">
               <Badge variant="outline">{post.category}</Badge>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="text-sm text-muted-foreground">
                 {post.readTime}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
+            <div className="mb-6 flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
+                <div className="glass-surface flex h-10 w-10 items-center justify-center rounded-full font-semibold text-sky-600 dark:text-sky-300">
                   {post.author.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">
-                    {post.author.name}
-                  </p>
+                  <p className="font-medium text-foreground">{post.author.name}</p>
                   <p className="text-sm">{formatDate(post.publishedAt)}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="mb-6 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <Badge key={tag} variant="secondary">
                   {tag}
@@ -86,16 +82,13 @@ export default function BlogDetailPage() {
               ))}
             </div>
 
-            <p className="text-xl text-gray-700 dark:text-gray-300">
-              {post.excerpt}
-            </p>
+            <p className="text-xl text-foreground/90">{post.excerpt}</p>
           </header>
 
-          {/* Article Content */}
           <Card className="mb-8">
             <CardContent className="pt-6">
               {post.content ? (
-                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100">
+                <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-sky-600 dark:prose-a:text-sky-300 prose-code:text-sm prose-pre:bg-slate-900 prose-pre:text-slate-100">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
@@ -119,11 +112,11 @@ export default function BlogDetailPage() {
                   </ReactMarkdown>
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                <div className="py-12 text-center">
+                  <p className="mb-4 text-muted-foreground">
                     Content coming soon...
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">
+                  <p className="text-sm text-muted-foreground/90">
                     This article is still being written.
                   </p>
                 </div>
@@ -131,22 +124,21 @@ export default function BlogDetailPage() {
             </CardContent>
           </Card>
 
-          {/* Article Footer */}
-          <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+          <div className="border-t border-border/70 pt-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                <p className="mb-2 text-sm text-muted-foreground">
                   Written by
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-white">
+                <p className="font-semibold text-foreground">
                   {post.author.name}
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                <p className="mb-2 text-sm text-muted-foreground">
                   Published on
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-white">
+                <p className="font-semibold text-foreground">
                   {formatDate(post.publishedAt)}
                 </p>
               </div>
