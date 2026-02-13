@@ -42,8 +42,8 @@ export default function Navbar() {
   }
 
   const navItems = [
-    { name: 'Blog', href: '/blog', icon: '📰' },
-    { name: 'Notes', href: '/notes', icon: '📓' },
+    // { name: 'Blog', href: '/blog', icon: '📰' },
+    // { name: 'Notes', href: '/notes', icon: '📓' },
     { name: 'Projects', href: '/projects', icon: '☕' },
     { name: 'About Me', href: '/about', icon: '💁🏻' }
   ]
