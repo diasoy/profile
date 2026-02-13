@@ -66,7 +66,7 @@ export default function BlogDetailPage() {
 
             <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
+                <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
                   {post.author.name.charAt(0)}
                 </div>
                 <div>
@@ -99,21 +99,18 @@ export default function BlogDetailPage() {
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-                      code({ inline, className, children, ...props }) {
+                      code({ className, children }) {
                         const match = /language-(\w+)/.exec(className || '');
-                        return !inline && match ? (
+                        return match ? (
                           <SyntaxHighlighter
                             style={vscDarkPlus}
                             language={match[1]}
                             PreTag="div"
-                            {...props}
                           >
                             {String(children).replace(/\n$/, '')}
                           </SyntaxHighlighter>
                         ) : (
-                          <code className={className} {...props}>
-                            {children}
-                          </code>
+                          <code className={className}>{children}</code>
                         );
                       },
                     }}

@@ -26,9 +26,6 @@ export default function Projects() {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
             Things I&apos;ve built and open-source contributions.
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
-          </p>
         </div>
 
         {/* Filters */}

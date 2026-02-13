@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Moon, Sun, Menu, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -48,6 +50,12 @@ export default function Navbar() {
     { name: 'About Me', href: '/about', icon: '💁🏻' }
   ]
 
+  const isActiveHref = (href: string) => {
+    if (!pathname) return false
+    if (href === '/') return pathname === '/'
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
   return (
     <>
       {/* Mobile Header */}
@@ -85,7 +93,13 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-3 px-3 py-2 text-base font-medium text-gray-700 hover:cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  className={[
+                    'flex items-center space-x-3 px-3 py-2 text-base font-medium hover:cursor-pointer transition-colors rounded',
+                    isActiveHref(item.href)
+                      ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                      : 'text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                  ].join(' ')}
+                  aria-current={isActiveHref(item.href) ? 'page' : undefined}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="text-xl">{item.icon}</span>
@@ -149,7 +163,13 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-3 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+                  className={[
+                    'flex items-center space-x-3 px-3 py-2 text-sm font-medium rounded transition-colors',
+                    isActiveHref(item.href)
+                      ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                      : 'text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                  ].join(' ')}
+                  aria-current={isActiveHref(item.href) ? 'page' : undefined}
                 >
                   <span className="text-base">{item.icon}</span>
                   <span>{item.name}</span>
