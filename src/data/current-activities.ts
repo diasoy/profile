@@ -10,19 +10,19 @@ export const currentActivities: CurrentActivity[] = [
   },
   {
     id: 2,
-    activity: "Looking for internship opportunities"
+    activity: "Looking for internship/fulltime opportunities"
   },
   {
     id: 3,
-    activity: "Trail running and road running"
+    activity: "Learning new programming languages and frameworks"
   },
   {
     id: 4,
-    activity: "Watching K-dramas"
+    activity: "Trail running and road running"
   },
   {
     id: 5,
-    activity: "Playing games"
+    activity: "Playing MLBB and Pointblank"
   }
 ];
 

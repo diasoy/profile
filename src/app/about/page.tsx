@@ -1,226 +1,130 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { skills } from "@/data/skills";
-import { education } from "@/data/education";
-import { certifications } from "@/data/certifications";
-import { experience } from "@/data/experience";
+import { aboutMe } from "@/data/about";
+import { currentActivities, lastUpdated } from "@/data/current-activities";
+import { galleryImages } from "@/data/gallery";
+import { hardwareItems, softwareTools, websiteDescription } from "@/data/tools";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            👋 About Me
+    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-300">
+      <div className="mx-auto max-w-5xl px-6 lg:px-12 py-12">
+        <header className="mb-10">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            💁🏻 About Me
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-            Full Stack Developer & Tech Enthusiast
+          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+            {aboutMe.firstDesc}
           </p>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Hi! I&apos;m a passionate full-stack developer with over 5 years
-              of experience building web and mobile applications. I specialize
-              in creating scalable, performant, and user-friendly solutions
-              using modern technologies like React, Next.js, Node.js, and
-              TypeScript.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
-              I love turning complex problems into simple, beautiful, and
-              intuitive solutions. When I&apos;m not coding, you can find me
-              exploring new technologies, contributing to open-source projects,
-              or sharing knowledge through blog posts and tutorials.
+          <br />
+          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+            {aboutMe.secondDesc}
+          </p>
+          <br />
+          <p className="text-lg text-justify text-gray-600 dark:text-gray-400 leading-relaxed">
+            {aboutMe.thirdDesc}
+          </p>
+        </header>
+
+        <section className="my-8">
+          <div className="mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+              Gallery
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              A glimpse into my journey and experiences
             </p>
           </div>
-        </div>
+          <hr />
 
-        <Separator className="my-8" />
-
-        {/* Skills Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            💻 Skills & Technologies
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Frontend Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.frontend.map((skill) => (
-                    <Badge key={skill} variant="secondary">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Backend Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.backend.map((skill) => (
-                    <Badge key={skill} variant="secondary">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Mobile Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.mobile.map((skill) => (
-                    <Badge key={skill} variant="secondary">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Tools & Platforms</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.tools.map((skill) => (
-                    <Badge key={skill} variant="secondary">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <Separator className="my-8" />
-
-        {/* Experience Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            💼 Experience
-          </h2>
-          <div className="space-y-6">
-            {experience.map((exp, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <CardTitle className="text-xl mb-1">
-                        {exp.position}
-                      </CardTitle>
-                      <p className="text-blue-600 dark:text-blue-400 font-medium">
-                        {exp.company}
-                      </p>
-                    </div>
-                    <Badge variant="outline" className="mt-2 sm:mt-0 w-fit">
-                      {exp.period}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 dark:text-gray-300 mb-3">
-                    {exp.description}
-                  </p>
-                  <div>
-                    <p className="font-semibold text-sm text-gray-900 dark:text-white mb-2">
-                      Key Achievements:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1">
-                      {exp.achievements.map((achievement, i) => (
-                        <li
-                          key={i}
-                          className="text-gray-700 dark:text-gray-300 text-sm"
-                        >
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
+            {galleryImages.map((image) => (
+              <div
+                key={image.id}
+                className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-square"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={300}
+                  height={300}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <Separator className="my-8" />
+        {/* What I'm Doing Now Section */}
+        <section className="my-16">
+          <div className="">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              What I&apos;m doing now?
+            </h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
+              Updated {lastUpdated}
+            </p>
+            <hr />
 
-        {/* Education Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            🎓 Education
+            <ul className="space-y-3 ml-6 mt-6">
+              {currentActivities.map((item) => (
+                <li
+                  key={item.id}
+                  className="text-gray-700 dark:text-gray-300 relative before:content-['→'] before:absolute before:-left-6 before:text-gray-400 dark:before:text-gray-500"
+                >
+                  {item.activity}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Tools Section */}
+        <section className="my-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+            Tools
           </h2>
-          {education.map((edu, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <CardTitle className="text-xl mb-1">{edu.degree}</CardTitle>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium">
-                      {edu.institution}
-                    </p>
-                  </div>
-                  <Badge variant="outline" className="mt-2 sm:mt-0 w-fit">
-                    {edu.period}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 dark:text-gray-300">
-                  {edu.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+          <hr />
 
-        <Separator className="my-8" />
+          {/* Software */}
+          <div className="mb-10 mt-4">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              Software
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              {websiteDescription}
+            </p>
+            <ul className="space-y-2 ml-6 list-disc">
+              {softwareTools.map((tool) => (
+                <li key={tool.id} className="text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">{tool.category}</span>:{" "}
+                  {tool.name}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Certifications Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            📜 Certifications
-          </h2>
-          <Card>
-            <CardContent className="pt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
-                  >
-                    <svg
-                      className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span>{cert}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+          {/* Hardware */}
+          <div>
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              Hardware
+            </h3>
+            <ul className="space-y-3 ml-6 list-disc">
+              {hardwareItems.map((item) => (
+                <li key={item.id} className="text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">{item.category}</span>:{" "}
+                  {item.name}
+                  {item.specs && (
+                    <ul className="ml-6 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+                      {item.specs.map((spec, index) => (
+                        <li key={index}>{spec}</li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </div>
     </main>
   );

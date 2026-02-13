@@ -43,7 +43,7 @@ export const hardwareItems: HardwareItem[] = [
   {
     id: 2,
     category: "Gaming PC",
-    name: "Gaming PC",
+    name: "",
     specs: [
       "CPU: AMD Ryzen 5 5600G",
       "Motherboard: B550M HVS SE",
