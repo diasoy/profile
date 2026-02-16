@@ -22,7 +22,7 @@ export default function Home() {
     <main className="min-h-screen text-foreground">
       <div className="mx-auto max-w-5xl px-6 lg:px-12 py-12">
         <header className="mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-10">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-10">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <Badge variant="secondary">
@@ -92,7 +92,7 @@ export default function Home() {
             {featuredProjects.map((project) => (
               <Card
                 key={project.id}
-                className="hover:shadow-lg transition-shadow duration-200 flex flex-col"
+                className="flex flex-col"
               >
                 <CardHeader>
                   <div className="flex items-start justify-between gap-3 mb-2">
@@ -188,7 +188,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
             <Link href="/projects" className="block group">
-              <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+              <Card className="h-full ">
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">Projects</CardTitle>
@@ -202,7 +202,7 @@ export default function Home() {
             </Link>
 
             <Link href="/about" className="block group">
-              <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+              <Card className="h-full">
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">About</CardTitle>
@@ -216,7 +216,7 @@ export default function Home() {
             </Link>
 
             <Link href="/notes" className="block group">
-              <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+              <Card className="h-full">
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">Notes</CardTitle>
@@ -230,7 +230,7 @@ export default function Home() {
             </Link>
 
             <Link href="/blog" className="block group">
-              <Card className="h-full hover:shadow-lg transition-shadow duration-200">
+              <Card className="h-full">
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <CardTitle className="text-xl">Blog</CardTitle>

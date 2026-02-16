@@ -7,7 +7,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        "glass-surface relative overflow-hidden text-card-foreground flex flex-col gap-6 rounded-2xl py-6 transition-[transform,box-shadow,background-color,border-color] duration-300 hover:-translate-y-0.5 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-20 before:bg-gradient-to-b before:from-white/72 before:to-transparent dark:before:from-white/18 dark:before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_top_right,var(--glass-glow-a),transparent_46%),radial-gradient(circle_at_bottom_left,var(--glass-glow-b),transparent_42%)] [&>*]:relative [&>*]:z-10",
+        "glass-surface relative overflow-hidden text-card-foreground flex flex-col gap-6 rounded-2xl py-6 will-change-transform transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-20 before:bg-linear-to-b before:from-white/72 before:to-transparent dark:before:from-white/18 dark:before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_top_right,var(--glass-glow-a),transparent_46%),radial-gradient(circle_at_bottom_left,var(--glass-glow-b),transparent_42%)] after:opacity-70 after:transition-opacity after:duration-700 after:ease-out hover:after:opacity-100 *:relative *:z-10",
         className
       )}
       {...props}
