@@ -20,10 +20,6 @@ export const currentActivities: CurrentActivity[] = [
     id: 4,
     activity: "Trail running and road running"
   },
-  {
-    id: 5,
-    activity: "Playing MLBB and Pointblank"
-  }
 ];
 
-export const lastUpdated = "December 28, 2025";
+export const lastUpdated = "February 16, 2026";
