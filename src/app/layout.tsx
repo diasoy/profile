@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import Maintenance from "./maintenance";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -25,12 +26,12 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} font-sans antialiased text-foreground`}
       >
+        {/* <Maintenance /> */}
         <Navbar />
-        {/* Main content with margin for sidebar */}
-        <div className="pt-20 lg:ml-[21.5rem] lg:pt-0">
+        <div className="pt-20 lg:ml-86 lg:pt-0">
           {children}
         </div>
-        <div className="lg:ml-[21.5rem]">
+        <div className="lg:ml-86">
           <Footer />
         </div>
       </body>

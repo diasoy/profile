@@ -30,7 +30,7 @@ const Footer = () => {
             </Link>
           </div>
           <p className="text-sm text-muted-foreground">
-            Made with <span className="text-rose-500">love</span> by Dias Norman
+            Made with <span className="text-rose-500">❤️</span> by Dias Norman
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState, type ComponentType } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FolderKanban, Laptop, Menu, Moon, Sun, UserRound, X } from 'lucide-react'
+import { FolderKanban, Laptop, Menu, Moon, NotebookPen, Sun, UserRound, X } from 'lucide-react'
 
 type NavItem = {
   name: string
@@ -12,6 +12,7 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
+  // { name: 'Notes', href: '/notes', icon: NotebookPen  },
   { name: 'Projects', href: '/projects', icon: FolderKanban },
   { name: 'About Me', href: '/about', icon: UserRound },
 ]

@@ -1,137 +1,119 @@
-export interface Note {
+export interface NotePost {
   id: string;
+  slug: string;
   title: string;
+  excerpt: string;
   content: string;
-  category: 'life' | 'music' | 'project' | 'tech' | 'other';
   tags: string[];
-  createdAt: string;
-  pinned: boolean;
+  publishedAt: string;
+  readTime: string;
+  coverImage?: string;
+  coverImageAlt?: string;
+  coverImageCaption?: string;
 }
 
-export const notes: Note[] = [
+const sortByPublishedAtDesc = (a: NotePost, b: NotePost): number => {
+  return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+};
+
+export const notes: NotePost[] = [
   {
     id: '1',
-    title: 'Year in Review: 2024 into 2025',
-    content: 'Life, music, projects, and everything else.',
-    category: 'life',
-    tags: ['Year Review', 'Reflection'],
-    createdAt: '2024-03-27',
-    pinned: true,
+    slug: 'year-in-review-2025-into-2026',
+    title: 'Year in Review: 2025 into 2026',
+    excerpt: 'A short reflection on coding, writing, and life lessons from 2025.',
+    tags: ['meta', 'year-in-review'],
+    publishedAt: '2026-01-12T00:00:00',
+    readTime: '7 min read',
+    coverImage: '/notes/year-review-2025.svg',
+    coverImageAlt: 'Year in review visual summary',
+    coverImageCaption: 'Snapshot highlights from my 2025 journey.',
+    content: `
+## Introduction
+
+2025 felt like a bridge year. I shipped more than I planned, but I also said "no" to many things that looked exciting and were not aligned with my priorities.
+
+## Coding
+
+I focused on boring but valuable improvements:
+
+- better folder conventions
+- stricter TypeScript types
+- simpler component APIs
+- fewer dependencies
+
+One habit that worked well was writing tiny utility functions first, then scaling them:
+
+\`\`\`ts
+export const chunk = <T>(items: T[], size: number): T[][] => {
+  if (size <= 0) return [items];
+  const result: T[][] = [];
+
+  for (let i = 0; i < items.length; i += size) {
+    result.push(items.slice(i, i + size));
+  }
+
+  return result;
+};
+\`\`\`
+
+![Contribution snapshot](/notes/contribution-map.svg "Contribution snapshot from 2025")
+
+## Writing
+
+I published fewer long articles, but my notes got more practical. Short notes with one clear takeaway helped me stay consistent.
+
+## Gaming and Media
+
+I reduced random screen time and spent more time with books and long-form interviews. The quality of input changed the quality of output.
+
+## Personal
+
+Running and sleep discipline made the biggest difference. The more predictable my day was, the easier it became to produce good work.
+    `,
   },
-  {
-    id: '2',
-    title: 'Redesign: Version 7.0: Sidebars, light-dark, and Bluesky',
-    content: 'Life, music, projects, and everything else.',
-    category: 'project',
-    tags: ['Design', 'Website', 'Update'],
-    createdAt: '2024-12-01',
-    pinned: true,
-  },
-  {
-    id: '3',
-    title: 'Year in Review: 2023 into 2024',
-    content: 'Life, music, projects, and everything else.',
-    category: 'life',
-    tags: ['Year Review', 'Reflection'],
-    createdAt: '2024-01-20',
-    pinned: true,
-  },
-  {
-    id: '4',
-    title: 'Albums That Changed My Life',
-    content: 'Music has always been a huge part of my creative process. Some albums that significantly influenced me: Daft Punk - Random Access Memories, Radiohead - OK Computer, Kendrick Lamar - To Pimp a Butterfly. Each one opened my mind to new possibilities.',
-    category: 'music',
-    tags: ['Music', 'Albums', 'Inspiration'],
-    createdAt: '2024-10-15',
-    pinned: false,
-  },
-  {
-    id: '5',
-    title: 'The Art of Code Reviews',
-    content: 'Good code reviews are about more than finding bugs. They\'re opportunities to share knowledge, improve team cohesion, and maintain code quality. Be kind, be thorough, and always explain the "why" behind your suggestions.',
-    category: 'tech',
-    tags: ['Code Review', 'Best Practices', 'Team'],
-    createdAt: '2024-10-08',
-    pinned: false,
-  },
-  {
-    id: '6',
-    title: 'Work-Life Balance as a Developer',
-    content: 'It took me years to learn this: burning out doesn\'t make you more productive. Take breaks, exercise, spend time with loved ones. Your best code often comes when you\'re well-rested and mentally fresh.',
-    category: 'life',
-    tags: ['Work-Life Balance', 'Health', 'Career'],
-    createdAt: '2024-09-30',
-    pinned: true,
-  },
-  {
-    id: '7',
-    title: 'Learning Guitar Changed My Problem Solving',
-    content: 'Learning an instrument as an adult teaches patience and iterative improvement - skills directly applicable to programming. Both require breaking down complex problems into manageable chunks and consistent practice.',
-    category: 'music',
-    tags: ['Guitar', 'Learning', 'Music', 'Skills'],
-    createdAt: '2024-09-22',
-    pinned: false,
-  },
-  {
-    id: '8',
-    title: 'Why I Switched to Dark Mode Everything',
-    content: 'Not just for the aesthetic (though that helps). Dark mode genuinely reduces eye strain during long coding sessions. Plus, it saves battery life on OLED screens. Once you go dark, you never go back.',
-    category: 'tech',
-    tags: ['Dark Mode', 'UI', 'Productivity'],
-    createdAt: '2024-09-15',
-    pinned: false,
-  },
-  {
-    id: '9',
-    title: 'Side Project Ideas I Want to Build',
-    content: 'Current ideas: 1) A tool for tracking coding time with insights, 2) A markdown-based note-taking app with Git sync, 3) A music practice tracker. So many ideas, so little time!',
-    category: 'project',
-    tags: ['Side Projects', 'Ideas', 'Planning'],
-    createdAt: '2024-09-08',
-    pinned: false,
-  },
-  {
-    id: '10',
-    title: 'Morning Routine for Developers',
-    content: 'My current routine: Wake up at 6 AM, 30 min exercise, healthy breakfast, review yesterday\'s code before starting new work. Starting the day with movement and reflection makes a huge difference in focus and productivity.',
-    category: 'life',
-    tags: ['Routine', 'Productivity', 'Health'],
-    createdAt: '2024-09-01',
-    pinned: false,
-  },
-  {
-    id: '11',
-    title: 'Open Source Contribution Tips',
-    content: 'Start small: fix typos, improve docs, add tests. Read the contributing guidelines carefully. Be patient and respectful. Every open source maintainer was once a first-time contributor too.',
-    category: 'tech',
-    tags: ['Open Source', 'GitHub', 'Community'],
-    createdAt: '2024-08-25',
-    pinned: false,
-  },
-  {
-    id: '12',
-    title: 'Favorite Lo-fi Playlists for Coding',
-    content: 'Lo-fi hip hop is my go-to coding music. It\'s repetitive enough to fade into the background but engaging enough to maintain focus. Check out ChilledCow and College Music on YouTube. Perfect for deep work sessions.',
-    category: 'music',
-    tags: ['Music', 'Lo-fi', 'Focus', 'Coding'],
-    createdAt: '2024-08-18',
-    pinned: false,
-  },
+  
 ];
 
-// Helper functions
-export const getPinnedNotes = (): Note[] => {
-  return notes.filter(note => note.pinned);
+export const getAllNotes = (): NotePost[] => {
+  return [...notes].sort(sortByPublishedAtDesc);
 };
 
-export const getNotesByCategory = (category: Note['category']): Note[] => {
-  return notes.filter(note => note.category === category);
+export const getNoteBySlug = (slug: string): NotePost | undefined => {
+  return notes.find((note) => note.slug === slug);
 };
 
-export const getNoteById = (id: string): Note | undefined => {
-  return notes.find(note => note.id === id);
+export const searchNotes = (query: string): NotePost[] => {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (!normalizedQuery) {
+    return getAllNotes();
+  }
+
+  return getAllNotes().filter((note) => {
+    const haystack = `${note.title} ${note.excerpt} ${note.tags.join(' ')} ${note.content}`.toLowerCase();
+    return haystack.includes(normalizedQuery);
+  });
 };
 
-export const getAllNoteCategories = (): string[] => {
-  return Array.from(new Set(notes.map(note => note.category)));
+export const getNotesGroupedByYear = (
+  noteList: NotePost[]
+): Array<{ year: string; notes: NotePost[] }> => {
+  const grouped = noteList.reduce<Record<string, NotePost[]>>((accumulator, note) => {
+    const year = new Date(note.publishedAt).getFullYear().toString();
+
+    if (!accumulator[year]) {
+      accumulator[year] = [];
+    }
+
+    accumulator[year].push(note);
+    return accumulator;
+  }, {});
+
+  return Object.keys(grouped)
+    .sort((a, b) => Number(b) - Number(a))
+    .map((year) => ({
+      year,
+      notes: grouped[year].sort(sortByPublishedAtDesc),
+    }));
 };
